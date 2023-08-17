@@ -10,3 +10,6 @@
 [submodule "Price"]
 	path = Price
 	url = https://github.com/EA31337/EA31337-indicators-price.git
+[submodule "Stats"]
+	path = Stats
+	url = https://github.com/EA31337/EA31337-indicators-stats.git
