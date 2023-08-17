@@ -4,3 +4,6 @@
 [submodule "Other"]
 	path = Other
 	url = https://github.com/EA31337/EA31337-indicators-other.git
+[submodule "Oscillators"]
+	path = Oscillators
+	url = https://github.com/EA31337/EA31337-indicators-oscillators.git
