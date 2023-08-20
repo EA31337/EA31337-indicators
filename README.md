@@ -1,2 +1,3 @@
-# EA31337-indicators
+# EA31337 Indicators
+
 Collection of indicators used for EA31337 strategies.
