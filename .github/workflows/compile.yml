@@ -1,0 +1,29 @@
+---
+name: Compile
+
+# yamllint disable-line rule:truthy
+on:
+  pull_request:
+    paths-ignore:
+      - '*.md'
+  push:
+    paths-ignore:
+      - '*.md'
+
+env:
+  INDI_COMMON_WORKDIR: ${{ vars.INDI_COMMON_WORKDIR || 'src/indicators/Common' }}
+  INDI_OTHER_WORKDIR: ${{ vars.INDI_OTHER_WORKDIR || 'src/indicators/Other' }}
+
+jobs:
+
+  compile-indicators-common:
+    name: Compile Indicators (Common)
+    uses: EA31337/EA31337-Indicators-Common/.github/workflows/compile.yml@dev-v1.000
+    with:
+      artifact_prefix: mt
+
+  compile-indicators-other:
+    name: Compile Indicators (Other)
+    uses: EA31337/EA31337-Indicators-Other/.github/workflows/compile.yml@dev
+    with:
+      artifact_prefix: mt
