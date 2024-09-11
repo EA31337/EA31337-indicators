@@ -1,0 +1,47 @@
+---
+name: Compile
+
+# yamllint disable-line rule:truthy
+on:
+  pull_request:
+    paths-ignore:
+      - '*.md'
+  push:
+    paths-ignore:
+      - '*.md'
+
+env:
+  INDI_COMMON_WORKDIR: ${{ vars.INDI_COMMON_WORKDIR || 'src/indicators/Common' }}
+  INDI_OSCILLATORS_WORKDIR: ${{ vars.INDI_OTHER_WORKDIR || 'src/indicators/Oscillators' }}
+  INDI_OTHER_WORKDIR: ${{ vars.INDI_OTHER_WORKDIR || 'src/indicators/Other' }}
+  INDI_STATS_WORKDIR: ${{ vars.INDI_STATS_WORKDIR || 'src/indicators/Stats' }}
+
+jobs:
+
+  compile-indicators-common:
+    name: Compile Indicators (Common)
+    uses: EA31337/EA31337-Indicators-Common/.github/workflows/compile.yml@master
+    with:
+      artifact_prefix: mt0
+      checkout_branch: master
+
+  compile-indicators-oscillators:
+    name: Compile Indicators (Oscillators)
+    uses: EA31337/EA31337-Indicators-Oscillators/.github/workflows/compile.yml@master
+    with:
+      artifact_prefix: mt1
+      checkout_branch: master
+
+  compile-indicators-other:
+    name: Compile Indicators (Other)
+    uses: EA31337/EA31337-Indicators-Other/.github/workflows/compile.yml@master
+    with:
+      artifact_prefix: mt2
+      checkout_branch: master
+
+  compile-indicators-stats:
+    name: Compile Indicators (Stats)
+    uses: EA31337/EA31337-Indicators-Stats/.github/workflows/compile.yml@master
+    with:
+      artifact_prefix: mt3
+      checkout_branch: master
